@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas Imprevistas</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        header {
+            text-align: center;
+        }
+        
+        #contenedor-principal {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        section {
+            width: 45%;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin-top: 10px;
+        }
+        
+        input, select, button {
+            margin-top: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        /* Botón de Pago en la esquina superior derecha */
+        .boton-pago {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+        }
+        
+        /* Botón de Servicios Extra en la esquina inferior derecha */
+        .boton-servicios {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #17a2b8;
+            color: white;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Reservas Imprevistas</h1>
+    </header>
+
+    <div id="contenedor-principal">
+        <!-- Consulta de Habitaciones -->
+        <section id="consulta">
+            <h2>Consulta de Habitaciones Disponibles</h2>
+            <form id="consulta-form">
+                <label for="fecha-entrada">Fecha de Entrada:</label>
+                <input type="date" id="fecha-entrada" required>
+                
+                <label for="fecha-salida">Fecha de Salida:</label>
+                <input type="date" id="fecha-salida" required>
+
+                <label for="tipo-habitacion">Tipo de Habitación:</label>
+                <select id="tipo-habitacion" required>
+                    <option value="" disabled selected>Seleccione una opción</option>
+                    <option value="simple">Simple</option>
+                    <option value="doble">Doble</option>
+                    <option value="suite">Suite</option>
+                </select>
+
+                <label for="precio-habitacion">Precio de la Habitación:</label>
+                <input type="text" id="precio-habitacion" readonly placeholder="$0.00">
+
+                <button type="button" id="buscar-habitaciones">Buscar Habitaciones</button>
+            </form>
+        </section>
+
+        <!-- Crear Reserva -->
+        <section id="crear-reserva">
+            <h2>Crear Reserva</h2>
+            <form id="reserva-form">
+                <label for="nombre-cliente">Nombre del Cliente:</label>
+                <input type="text" id="nombre-cliente" required>
+
+                <label for="habitacion-seleccionada">Habitación Seleccionada:</label>
+                <input type="text" id="habitacion-seleccionada" placeholder="Ej. Suite" required>
+
+                <label for="total-pago">Total a Pagar:</label>
+                <input type="text" id="total-pago" readonly placeholder="$0.00">
+            </form>
+
+            <!-- Botón para Pago -->
+            <button id="pagar-habitacion" class="boton-pago">Pagar</button>
+
+            <!-- Botón de Servicios Extra -->
+            <button id="servicios-extra" class="boton-servicios">Servicios Extra</button>
+        </section>
+    </div>
+
+    <!-- Mini Factura -->
+    <section id="factura" style="display:none;">
+        <h2>Factura</h2>
+        <p id="detalles-factura">Detalles de la reserva aparecerán aquí...</p>
+        <button id="pagar">Confirmar y Pagar</button>
+    </section>
+
+</body>
+</html>
